@@ -1,0 +1,24 @@
+.
+|-- index.html
+|-- main.js
+|-- package.json
+|-- renderer.js
+|
+|-- common (?)
+|   |-- io.py
+|   |-- db.py
+|
+|-- engine
+|   |-- engine.py
+|   |-- recommender.py
+|   |-- client.py
+|   `-- requirements.txt
+|
+|-- remote
+|   |-- core.py
+|   |-- aggregator.py
+|   |-- server.py
+|   `-- requirements.txt
+|
+|-- LICENSE
+`-- README.md
