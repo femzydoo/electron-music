@@ -1,0 +1,69 @@
+import sqlite3
+from typing import Any
+
+
+sqlite_file = 'music_db.sqlite'    # name of the sqlite database file
+table1 = 'Songs'	# name of the table to be created
+table2 = 'Playlist'	# name of the table to be created
+table3 = 'Artists'
+table4 = 'Loved'
+table5 = 'Playlist'
+
+#columns we will use across tables
+id_column = 'No.' # name of the PRIMARY KEY column
+column1 = 'Song'
+column2 = 'Artist'
+column3 = 'Album'
+column4 = 'Genre'
+column6 = 'Loved'
+column5 = 'Rating'
+column6 = 'Mood'
+column7 = 'Year'
+column8 = 'Track #'
+column9 = 'Play count'
+
+#column types
+column_type_text = 'TEXT' # E.g., INTEGER, TEXT, NULL, REAL, BLOB
+column_type_integer = 'INT'
+column_type_null = 'NULL'
+column_type_blob = 'BLOB'
+
+
+
+# Connecting to the database file
+conn = sqlite3.connect(sqlite_file)
+c = conn.cursor()
+
+# Creating the Songs Table
+c.execute('CREATE TABLE IF NOT CREATED {tn} ({nf} {ct}) ({nf2} {ct}) ({nf3} {ct}) ({nf4} {ct})({nf5}{ct1})({nf6}{ct2})'\
+        .format(tn=table1, nf=column1, nf2=column2, nf3=column3, nf4=column4, nf5 = column5, nf6 = column6,\
+                nf7=column7, nf8=column8, nf9=column9, ct=column_type_text, ct1=column_type_integer,\
+                ct2=column_type_blob))
+
+# Creating the Artist Table
+c.execute('CREATE TABLE IF NOT CREATED {tn} ({nf} {ct}) ({nf2} {ct}) ({nf3} {ct}) ({nf4} {ct})({nf5}{ct1})({nf6}{ct2})'\
+        .format(tn=table3, nf=column2, nf2=column1, nf3=column3, nf4=column4, nf5 = column5, nf6 = column6,\
+                nf7=column7, nf8=column8, nf9=column9, ct=column_type_text, ct1=column_type_integer,\
+                ct2=column_type_blob))
+
+# Creating the Albums Table
+c.execute('CREATE TABLE IF NOT CREATED {tn}({nf} {ct}) ({nf2} {ct}) ({nf3} {ct}) ({nf4} {ct})({nf5}{ct1})({nf6}{ct2})'\
+        .format(tn=table1, nf=column3, nf2=column2, nf3=column1, nf4=column4, nf5 = column5, nf6 = column6,\
+                nf7=column7, nf8=column8, nf9=column9, ct=column_type_text, ct1=column_type_integer,\
+                ct2=column_type_blob))
+
+# Creating the Loved Table
+c.execute('CREATE TABLE IF NOT CREATED{tn}({nf} {ct}) ({nf2} {ct}) ({nf3} {ct}) ({nf4} {ct}) ({nf5}{ct1}) ({nf6}{ct2})'\
+        .format(tn=table1, nf=id_column, nf2=column1, nf3=column6, nf4=column4, nf5 = column5, nf6 = column6,\
+                nf7=column7, nf8=column8, nf9=column9, ct=column_type_text, ct1=column_type_integer,\
+                ct2=column_type_blob))
+
+
+# Creating the Playlist Table
+c.execute('CREATE TABLE IF NOT CREATED{tn} ({nf} {ct}) ({nf2} {ct}) ({nf3} {ct}) ({nf4} {ct})({nf5}{ct1})({nf6}{ct2})'\
+          .format(tn=table5, nf=id_column, nf2=column1, nf3=column2, nf4=column3, nf5=column9, ct=column_type_text,\
+                  ct1=column_type_integer, ct2=column_type_blob, nf6=column6))
+
+conn.commit()
+conn.close()
+
