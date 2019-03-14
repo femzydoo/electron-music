@@ -62,7 +62,19 @@ def update(self, id, song, artist, album, genre, mood, year):
                      (song, artist, album, genre, mood, year))
     self.conn.commit()
 
+   # For the loved button that creates the favorites playlist
+    def loved(loved):
+        while loved != TRUE:
+            return null
+            loved = True
+            print (u"\u2661")
+        loved.cur.execute('''UPDATE Songs SET loved=?''', (id, loved))
+        self.conn.commit()
+        loved.cur.execute("SELECT * FROM Songs")
+        rows = self.cur.fetchall()
+        return rows
 
+    
 def __del__(self):
     self.conn.close()
 
